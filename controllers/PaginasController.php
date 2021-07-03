@@ -23,14 +23,24 @@ class PaginasController
 		$router->render("paginas/nosotros");
 	}
 
-	public static function propiedades()
+	public static function propiedades(Router $router)
 	{
-		echo "Desde propiedades";
+		$propiedades = Propiedad::all();
+
+		$router->render("paginas/propiedades", [
+			"propiedades" => $propiedades
+		]);
 	}
 
-	public static function propiedad()
+	public static function propiedad(Router $router)
 	{
-		echo "Desde propiedad";
+		$id = validarORedireccionar("/propiedades");
+
+		$propiedad = Propiedad::find($id);
+
+		$router->render("paginas/propiedad", [
+			"propiedad" => $propiedad
+		]);
 	}
 
 	public static function blog()
