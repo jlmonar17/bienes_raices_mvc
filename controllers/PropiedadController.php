@@ -69,9 +69,54 @@ class PropiedadController
 		]);
 	}
 
-	public static function actualizar()
-
+	public static function actualizar(Router $router)
 	{
-		echo "Actualizando propiedad";
+		$id = validarORedireccionar("/admin");
+
+		$propiedad = Propiedad::find($id);
+		$vendedores = Vendedor::all();
+
+		$errores = Propiedad::getErrores();
+
+		if ($_SERVER["REQUEST_METHOD"] === "POST") {
+			$args = $_POST["propiedad"];
+
+			$propiedad->sincronizar($args);
+
+			// Validaciones
+			$errores = $propiedad->validar();
+
+			if (empty($errores)) {
+				/* Subida de archivos */
+				/* Crear carpeta  para subir la imagen */
+				if (!is_dir(IMAGENES_URL)) {
+					mkdir(IMAGENES_URL);
+				}
+
+				/* Genero nombre único para la imagen */
+				$nombreImagen = md5(uniqid(rand(), true)) . ".jpg";
+
+				/* Resize de la imagen si es que el usuario seleccionó imagen */
+				if ($_FILES["propiedad"]["tmp_name"]["imagen"]) {
+					$imagen = ImageManagerStatic::make($_FILES["propiedad"]["tmp_name"]["imagen"])->fit(800, 600);
+					$propiedad->setImagen($nombreImagen);
+
+					/* Guardo la imagen en el servidor */
+					$imagen->save(IMAGENES_URL . $nombreImagen);
+				}
+
+				$resultado = $propiedad->guardar();
+
+				if ($resultado) {
+					header("Location: /admin?resultado=2");
+				}
+			}
+		}
+
+		$router->render("propiedades/actualizar", [
+			"propiedad" => $propiedad,
+			"vendedores" => $vendedores,
+			"errores" => $errores,
+		]);
 	}
 }
