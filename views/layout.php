@@ -17,7 +17,7 @@ if (!isset($inicio)) {
 	<meta name="viewport" content="width=device-width" />
 	<title>Bienes Raíces</title>
 
-	<link rel="stylesheet" href="build/css/app.css" />
+	<link rel="stylesheet" href="../build/css/app.css" />
 </head>
 
 <body>
@@ -25,15 +25,15 @@ if (!isset($inicio)) {
 		<div class="contenedor contenido-header">
 			<div class="barra">
 				<a class="logo" href="index.php">
-					<img src="build/img/logo.svg" alt="logo imagen" />
+					<img src="../build/img/logo.svg" alt="logo imagen" />
 				</a>
 
 				<div class="mobile-menu">
-					<img src="build/img/barras.svg" alt="imagen barras menu" />
+					<img src="../build/img/barras.svg" alt="imagen barras menu" />
 				</div>
 
 				<div class="derecha">
-					<img class="dark-mode-boton" src="build/img/dark-mode.svg" alt="imagen dark mode" />
+					<img class="dark-mode-boton" src="../build/img/dark-mode.svg" alt="imagen dark mode" />
 
 					<nav class="navegacion">
 						<a href="nosotros.php">Nosotros</a>
@@ -69,7 +69,7 @@ if (!isset($inicio)) {
 		<p class="copyright">Todos los derechos reservados <?php echo date("Y") ?> &copy;</p>
 	</footer>
 
-	<script src="build/js/bundle.min.js"></script>
+	<script src="../build/js/bundle.min.js"></script>
 </body>
 
 </html>
