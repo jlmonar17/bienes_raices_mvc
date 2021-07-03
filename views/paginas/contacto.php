@@ -40,10 +40,10 @@
 			<p>¿Cómo desea ser contactado?</p>
 			<div class="forma-contacto">
 				<label for="contactar-telefono">Teléfono</label>
-				<input type="radio" id="contactar-telefono" name="contacto[contacto]" required />
+				<input type="radio" id="contactar-telefono" value="telefono" name="contacto[contacto]" required />
 
 				<label for="contactar-email">E-mail</label>
-				<input type="radio" id="contactar-email" name="contacto[contacto]" required />
+				<input type="radio" id="contactar-email" value="email" name="contacto[contacto]" required />
 			</div>
 
 			<p>Si eligió teléfono, elija la fecha y la hora</p>
