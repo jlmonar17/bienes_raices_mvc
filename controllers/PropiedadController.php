@@ -119,4 +119,27 @@ class PropiedadController
 			"errores" => $errores,
 		]);
 	}
+
+	public static function eliminar(Router $router)
+	{
+		if ($_SERVER["REQUEST_METHOD"] === "POST") {
+			$id = $_POST["id"];
+			$id = filter_var($id, FILTER_VALIDATE_INT);
+
+			if ($id) {
+				$tipo = $_POST["tipo"];
+
+				if (validarTipoContenido($tipo)) {
+					$propiedad = Propiedad::find($id);
+					$resultado = $propiedad->eliminar();
+
+					if ($resultado) {
+						$propiedad->borrarImagen();
+
+						header("Location: /admin?resultado=3");
+					}
+				}
+			}
+		}
+	}
 }
