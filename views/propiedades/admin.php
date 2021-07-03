@@ -10,7 +10,7 @@
 	endif;    ?>
 
 	<a href="/propiedades/crear" class="boton boton-verde">Nueva propiedad</a>
-	<a href="vendedores/crear.php" class="boton boton-amarillo">Nuevo(a) vendedor</a>
+	<a href="/vendedores/crear" class="boton boton-amarillo">Nuevo(a) vendedor</a>
 
 	<h2>Propiedades</h2>
 
