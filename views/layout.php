@@ -24,7 +24,7 @@ if (!isset($inicio)) {
 	<header class="header <?php echo $inicio ? "inicio" : "" ?>">
 		<div class="contenedor contenido-header">
 			<div class="barra">
-				<a class="logo" href="index.php">
+				<a class="logo" href="/">
 					<img src="../build/img/logo.svg" alt="logo imagen" />
 				</a>
 
@@ -36,12 +36,12 @@ if (!isset($inicio)) {
 					<img class="dark-mode-boton" src="../build/img/dark-mode.svg" alt="imagen dark mode" />
 
 					<nav class="navegacion">
-						<a href="nosotros.php">Nosotros</a>
-						<a href="anuncios.php">Anuncios</a>
-						<a href="blog.php">Blog</a>
-						<a href="contacto.php">Contacto</a>
+						<a href="/nosotros">Nosotros</a>
+						<a href="/propiedades">Anuncios</a>
+						<a href="/blog">Blog</a>
+						<a href="/contacto">Contacto</a>
 						<?php if ($auth) : ?>
-							<a href="/curso_desarrollo_web_completo/bienes_raices/cerrar-sesion.php">Cerrar Sesión</a>
+							<a href="/cerrar-sesion">Cerrar Sesión</a>
 						<?php endif; ?>
 					</nav>
 				</div>
@@ -59,10 +59,10 @@ if (!isset($inicio)) {
 	<footer class="footer seccion">
 		<div class="contenido-footer contenedor">
 			<nav class="navegacion">
-				<a href="nosotros.php">Nosotros</a>
-				<a href="anuncios.php">Anuncios</a>
-				<a href="blog.php">Blog</a>
-				<a href="contacto.php">Contacto</a>
+				<a href="/nosotros">Nosotros</a>
+				<a href="/propiedades">Anuncios</a>
+				<a href="/blog">Blog</a>
+				<a href="/contacto">Contacto</a>
 			</nav>
 		</div>
 
