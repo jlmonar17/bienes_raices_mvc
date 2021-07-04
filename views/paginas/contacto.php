@@ -1,18 +1,16 @@
 <main class="contenedor seccion">
 	<h1>Llenar el formulario de contacto</h1>
 
+	<?php if ($mensaje) : ?>
+		<p class="alert exito"><?php echo $mensaje; ?></p>
+	<?php endif; ?>
+
 	<form class="formulario" method="POST">
 		<fieldset>
 			<legend>Información personal</legend>
 
 			<label for="nombre">Nombre</label>
 			<input type="text" id="nombre" placeholder="Tu Nombre" name="contacto[nombre]" required />
-
-			<label for="email">E-mail</label>
-			<input type="email" id="email" placeholder="Tu Email" name="contacto[email]" required />
-
-			<label for="telefono">Teléfono</label>
-			<input type="tel" id="telefono" placeholder="Tu Teléfono" name="contacto[telefono]" />
 
 			<label for="mensaje">Mensaje</label>
 			<textarea id="mensaje" placeholder="Tu Mensaje" name="contacto[mensaje]" required></textarea>
@@ -40,19 +38,13 @@
 			<p>¿Cómo desea ser contactado?</p>
 			<div class="forma-contacto">
 				<label for="contactar-telefono">Teléfono</label>
-				<input type="radio" id="contactar-telefono" value="telefono" name="contacto[contacto]" required />
+				<input type="radio" id="contactar-telefono" value="telefono" name="contacto[contacto]" />
 
 				<label for="contactar-email">E-mail</label>
-				<input type="radio" id="contactar-email" value="email" name="contacto[contacto]" required />
+				<input type="radio" id="contactar-email" value="email" name="contacto[contacto]" />
 			</div>
 
-			<p>Si eligió teléfono, elija la fecha y la hora</p>
-
-			<label for="fecha">Fecha:</label>
-			<input type="date" id="fecha" name="contacto[fecha]" />
-
-			<label for="hora">Hora:</label>
-			<input type="time" id="hora" min="09:00" max="18:00" name="contacto[hora]" />
+			<div id="metodo-contacto"></div>
 		</fieldset>
 
 		<input type="submit" class="boton-verde" value="Enviar" />

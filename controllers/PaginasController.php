@@ -56,6 +56,8 @@ class PaginasController
 
 	public static function contacto(Router $router)
 	{
+		$mensaje = null;
+
 		if ($_SERVER["REQUEST_METHOD"] === "POST") {
 			$respuestas = $_POST["contacto"];
 
@@ -75,7 +77,7 @@ class PaginasController
 			$mail->setFrom("from@example.com", "Mailer");
 			$mail->addAddress("jose@example.com", "José Luis");
 
-			//Habilitar HML
+			//Habilitar HTML
 			$mail->isHTML(true);
 			$mail->CharSet = "UTF-8";
 			$mail->Subject = "Nuevo contacto";
@@ -83,25 +85,34 @@ class PaginasController
 			$contenido = "<html>";
 			$contenido .= "<h1>Tienes un nuevo mensaje</h1>";
 			$contenido .= "<p> Nombre: " . $respuestas["nombre"] . "</p>";
-			$contenido .= "<p> Email: " . $respuestas["email"] . "</p>";
-			$contenido .= "<p> Teléfono: " . $respuestas["telefono"] . "</p>";
+
+			// Mostrar algunos datos en el email de forma condicional
+			if ($respuestas["contacto"] === "email") {
+				$contenido .= "<p>Eligió ser contactado por email.</p>";
+				$contenido .= "<p> Email: " . $respuestas["email"] . "</p>";
+			} else {
+				$contenido .= "<p>Eligió ser contactado por teléfono.</p>";
+				$contenido .= "<p> Teléfono: " . $respuestas["telefono"] . "</p>";
+				$contenido .= "<p> Fecha contacto: " . $respuestas["fecha"] . " " . $respuestas["hora"] . "</p>";
+			}
+
 			$contenido .= "<p> Mensaje: " . $respuestas["mensaje"] . "</p>";
 			$contenido .= "<p> Vende o Compra: " . $respuestas["tipo"] . "</p>";
-			$contenido .= "<p> Presupuesto: $" . $respuestas["precio"] . "</p>";
-			$contenido .= "<p> Prefiere ser contactado por: " . $respuestas["contacto"] . "</p>";
-			$contenido .= "<p> Fecha contacto: " . $respuestas["fecha"] . " " . $respuestas["hora"] . "</p>";
+			$contenido .= "<p> Precio o presupuesto: $" . $respuestas["precio"] . "</p>";
 			$contenido .= "</html>";
 
 			$mail->Body = $contenido;
 			$mail->AltBody = "Texto alternativo sin html";
 
 			if ($mail->send()) {
-				echo "Correo enviado corectamente";
+				$mensaje = "Correo enviado corectamente";
 			} else {
-				echo "ERROR AL ENVIAR CORREO";
+				$mensaje = "El mensaje no se pudo enviar, contacte a soporte...";
 			}
 		}
 
-		$router->render("paginas/contacto", []);
+		$router->render("paginas/contacto", [
+			"mensaje" => $mensaje
+		]);
 	}
 }
