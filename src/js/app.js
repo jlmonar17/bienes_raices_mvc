@@ -55,18 +55,18 @@ function mostrarMetodosContacto(event) {
     if (event.target.value === "telefono") {
         divContacto.innerHTML = `
 			<label for="telefono">Teléfono</label>
-            <input type="tel" id="telefono" placeholder="Tu Teléfono" name="contacto[telefono]" />
+                        <input data-cy="input-telefono" type="tel" id="telefono" placeholder="Tu Teléfono" name="contacto[telefono]" />
 
 			<label for="fecha">Fecha:</label>
-			<input type="date" id="fecha" name="contacto[fecha]" />
+			<input  data-cy="input-fecha" type="date" id="fecha" name="contacto[fecha]" />
 
 			<label for="hora">Hora:</label>
-			<input type="time" id="hora" min="09:00" max="18:00" name="contacto[hora]" />
+			<input data-cy="input-hora" type="time" id="hora" min="09:00" max="18:00" name="contacto[hora]" />
         `;
     } else if (event.target.value === "email") {
         divContacto.innerHTML = `
 			<label for="email">E-mail</label>
-			<input type="email" id="email" placeholder="Tu Email" name="contacto[email]" required />
+			<input data-cy="input-email" type="email" id="email" placeholder="Tu Email" name="contacto[email]" required />
         `;
     }
 }

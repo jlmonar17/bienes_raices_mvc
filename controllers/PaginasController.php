@@ -105,7 +105,7 @@ class PaginasController
 			$mail->AltBody = "Texto alternativo sin html";
 
 			if ($mail->send()) {
-				$mensaje = "Correo enviado corectamente";
+				$mensaje = "Correo Enviado Correctamente";
 			} else {
 				$mensaje = "El mensaje no se pudo enviar, contacte a soporte...";
 			}
