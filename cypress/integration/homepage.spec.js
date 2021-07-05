@@ -34,4 +34,51 @@ describe("Carga la página principal", () => {
             .find(".icono")
             .should("not.have.length", 4);
     });
+
+    it("Prueba la sección de propiedades", function () {
+        cy.get('[data-cy="anuncio"]').should("exist");
+        cy.get('[data-cy="anuncio"]').should("have.length", 3);
+        cy.get('[data-cy="anuncio"]').should("not.have.length", 5);
+
+        // Probando enlace a las propiedades
+        cy.get('[data-cy="enlace-propiedad"]').should(
+            "have.class",
+            "boton-amarillo-block"
+        );
+
+        // Verificando que los enlances contengan el texto Ver Propiedad
+        cy.get('[data-cy="enlace-propiedad"]')
+            .first()
+            .invoke("text")
+            .should("equal", "Ver Propiedad");
+
+        // Click sobre el enlace de Ver Propiedad y que se dirige a la página se supone debe ir
+        cy.get('[data-cy="enlace-propiedad"]').first().click();
+        cy.get('[data-cy="titulo-propiedad"]').should("exist");
+
+        // Retorno a la página principal luego de 2 segundos
+        cy.wait(1000);
+        cy.go("back");
+    });
+
+    it("Prueba el routing hacia todas las propiedades", function () {
+        cy.get('[data-cy="todas-propiedades"]').should("exist");
+        cy.get('[data-cy="todas-propiedades"]').should(
+            "have.class",
+            "boton-verde"
+        );
+
+        // Verifica que el enlace lleva a la ruta correcta
+        cy.get('[data-cy="todas-propiedades"]')
+            .invoke("attr", "href")
+            .should("equal", "/propiedades");
+
+        cy.get('[data-cy="todas-propiedades"]').click();
+        cy.get('[data-cy="heading-propiedades"]')
+            .invoke("text")
+            .should("equals", "Casas y Depas en Venta");
+
+        cy.wait(2000);
+        cy.go("back");
+    });
 });
