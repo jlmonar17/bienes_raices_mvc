@@ -107,4 +107,26 @@ describe("Carga la página principal", () => {
         cy.wait(1000);
         cy.visit("/");
     });
+
+    it("Prueba el blog y los testimoniales", function () {
+        cy.get('[data-cy="blog"]').should("exist");
+        cy.get('[data-cy="blog"]')
+            .find("h3")
+            .invoke("text")
+            .should("equal", "Nuestro Blog");
+        cy.get('[data-cy="blog"]')
+            .find("h3")
+            .invoke("text")
+            .should("not.equal", "Blog");
+
+        cy.get('[data-cy="testimoniales"]').should("exist");
+        cy.get('[data-cy="testimoniales"]')
+            .find("h3")
+            .invoke("text")
+            .should("equal", "Testimoniales");
+        cy.get('[data-cy="testimoniales"]')
+            .find("h3")
+            .invoke("text")
+            .should("not.equal", "Nuestros Testimoniales");
+    });
 });
