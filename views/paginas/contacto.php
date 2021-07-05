@@ -1,5 +1,5 @@
 <main class="contenedor seccion">
-	<h1>Llenar el formulario de contacto</h1>
+	<h1 data-cy="heading-contacto">Llenar el formulario de contacto</h1>
 
 	<?php if ($mensaje) : ?>
 		<p class="alert exito"><?php echo $mensaje; ?></p>
