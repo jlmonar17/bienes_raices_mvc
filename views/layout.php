@@ -35,9 +35,9 @@ if (!isset($inicio)) {
 				<div class="derecha">
 					<img class="dark-mode-boton" src="../build/img/dark-mode.svg" alt="imagen dark mode" />
 
-					<nav class="navegacion">
+					<nav data-cy="navegacion-header" class="navegacion">
 						<a href="/nosotros">Nosotros</a>
-						<a href="/propiedades">Anuncios</a>
+						<a href="/propiedades">Propiedades</a>
 						<a href="/blog">Blog</a>
 						<a href="/contacto">Contacto</a>
 						<?php if ($auth) : ?>
@@ -58,15 +58,15 @@ if (!isset($inicio)) {
 
 	<footer class="footer seccion">
 		<div class="contenido-footer contenedor">
-			<nav class="navegacion">
+			<nav data-cy="navegacion-footer" class="navegacion">
 				<a href="/nosotros">Nosotros</a>
-				<a href="/propiedades">Anuncios</a>
+				<a href="/propiedades">Propiedades</a>
 				<a href="/blog">Blog</a>
 				<a href="/contacto">Contacto</a>
 			</nav>
 		</div>
 
-		<p class="copyright">Todos los derechos reservados <?php echo date("Y") ?> &copy;</p>
+		<p data-cy="copyright" class="copyright">Todos los derechos reservados <?php echo date("Y") ?> &copy;</p>
 	</footer>
 
 	<script src="../build/js/bundle.min.js"></script>
